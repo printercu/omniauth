@@ -88,7 +88,7 @@ module OmniAuth
       end
 
       %w(uid info extra credentials).each do |fetcher|
-        class_eval <<-RUBY
+        class_eval <<-RUBY, __FILE__, __LINE__ + 1
           def #{fetcher}(&block)
             return @#{fetcher}_proc unless block_given?
             @#{fetcher}_proc = block
